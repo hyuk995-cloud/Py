@@ -1,0 +1,44 @@
+1. 튜플() 메서드
+.count() : 튜플 요소 개수 파악
+.index(value, [start, end]) : 특정요소 찾기 
+.sorted() : 요소 정렬
+--> 튜플로 변환 : tuple(~) -> 새 리스트로 반환
+
+2. 데이터 순환( for, enumerate사용)
+
+3. 세트 {}안에 요소 나열 {} x --> set()
+: 중복값 인정하지 않는 자료 (집합, 순서없음) --> 로또나 그런거에 쓸 수 있음
+
+리스트를 세트로
+numbers_list = [1,2,2,3,3,3,4,5,5]
+numbers_sete = set(numbers_list)
+print(f"리스트 : {numbers_list}")
+print(f"세트 : {numbers_sete}")
+
+--> 세트로 변환 set(~)
+  len() / in / max / min / sun / for순환 / .copy()/ .add () / .remove(없는 value)에러 가능 / remove랑 같은 .discard(없는 value)는 에러 안남 / clear()
+ .update()수정 / pop()
+ [ union (' ')합집함 / intersection (&) 교집합 / difference(-) 차집함] 
+
+
+  부분 집합 : c = {1, 2, 3} d = {1, 2, 3, 4, 5}
+  c.issubset(d) c는 d의 부분집합 여부 -->True
+
+  상위집합
+  d.issuperset(c) d는 c의 상위 집합 여부 --> True
+  
+  서로소 집합 e.isdisjoint(f) : 공통요소 없으면 서로소 집합임(True/False 반환)
+
+데이터 중복 제거
+data2 = list(set(data))
+
+kim_hobbies = "독서", "영화", "운동", "음악"
+lee_hobbies = "게임", "영화", "음악", "요리"
+
+공통관심사
+
+kim만의 관심사
+
+둘중 한명만의 관심사
+4. 함수
+
