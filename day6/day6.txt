@@ -1,0 +1,98 @@
+함수 (day5 이어서 설명)
+def greet()
+    print("~")
+
+result = greet() --> 출력 되는 값은 없음 : None  대부분은 Null이지만 파이썬은 None
+-----------------------------
+def greeting()
+    return "~"
+
+result = greeging() -> "~" 리턴을 외쳤기 떄문에 반환값 출력
+
+※  return false --> 함수 즉시 종료(펄스 떄문이 아님)
+
+=====================================================
+def add(a,b):
+ return a+b
+
+def divide(a,b):
+    if b==0
+        return "0으로 나눌 수 없습니다."
+    return a/b
+
+지역변수 : 함수 내에서 정의(함수밖에서 접근 불가)
+
+전역변수 : 함수 밖에서 정의
+
+==========================================================
+
+람다함수 (lambda 매개변수 : 표현식..)
+ - 익명함수, 간단한 표현식(한줄 표현 가능)
+ - return 없음, 자동 값 반환
+def add(a,b)
+    return a+b
+result = add(10,20)
+-------------------
+lambda_add = lambda a,b: a+b
+result = lambda_aa(10,20)
+
+is_event = lambda x: x%2 == 0 (True, False 값 반환)
+
+map(함수, 시퀀스)함수 : 각 시퀀스요소에 함수 적용
+
+map(int, list)
+
+sq1 = list(map(lambda x:x**2, nums)) - map함수
+sq2 = [x**2 for x in nums] -- 리스트 컴프리헨션
+-------------------------------------------------
+filter(함수, 시퀀스)-- 표현식 조건 True인 요소만 반복
+
+================================================================================
+함수 심화 활용, 파일처리
+파일열기
+file = open("파일명", "모드", encoding="utf-8")
+모드 - r : 읽기( 기본값, 파일 없으면 에러 )
+       w : 쓰기( 기존파일내용 삭제 후 작성, 파일 없으면 새로 생성)
+       a : 추가(기존파일 내용 끝에 내용 추가, 파일 없으면 에러)
+       w+ : 읽기 + 쓰기
+       a+ : 읽기 + 쓰기
+       rb, wb : 바이너리 읽기(Binary 형태 파일 읽기:이미지, mp3, 동영상) 
+           wb - 파일 복사, 저장
+
+파일닫기
+file.close() #반드시 실행 후 닫을 것
+
+with문 ( 권장 )
+with open("파일명","모드",encoding="utf-8") as file:
+ --> 자동으로 닫힘
+
+읽기 메서드
+    read() : 전체 내용을 하나의 문자열로 반환
+    readline() : 한 줄씩 읽기
+    readlines() : 모든 줄을 리스트로 반환
+쓰기 메서드
+    write() : 문자열을 파일에 쓰기
+    writelines() : 리스트의 각 요소를 파일에 쓰기
+
+파일 크기 확인
+os모듈 ( 운영체제 관련 기능 제공 모듈 ) import os모듈
+file_size = os.path.getsize("text.txt") 바이트 단위
+※ 큰 파일 (MB) read() ---> 메모리 부족
+    readline()으로 한줄씩 읽기
+    while문 사용, 조금씩 데이터 로드
+
+with ....
+lines = file.reader
+empty_lines=[]
+for line in line
+    empty_lines.append(line,strip()) --> 컴프리 헨션은 파일에
+
+#comment ----주석글판단은 #시작 sratwith(#)
+key_value --- if "=" in line:
+splie("=", 1) --> a,b = 10,20
+
+comment
+
+input() str / int / float형 변환에 유의
+
+
