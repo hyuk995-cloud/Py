@@ -91,7 +91,7 @@ print_st(std1)
 print_st(std2)
 -----------------------------------------------------
 class Student:
-    def __init__(self, name, age):
+    def __init__(self, name, age):            ※ __init__() : 초기 객체 생성자
         self.name = name
         self.age = age
     def introduce(self):
