@@ -1,0 +1,101 @@
+-- 입력값1, 연산자, 입력값2 -> 결과, 계속?
+ -- 입력 받을 때 숫자인지 확인(숫자만 받고 싶음.)
+    while
+        try
+        except ValueError
+
+ -- 계산기
+    입력 받을 때 숫자인지 확인(숫자만 받고 싶음.) -- 입력값1, 2
+        operator = 조건문 --> 산술식 정의(if elif else)
+    결과는 print(f"{숫자1}{연산자}{숫자2} = {결과값})
+
+    파일종류(~.txt / ~.csv / ~.json)
+    CSV --> 쉼표 구분 파일  --> 딕셔너리 리스트로  변환
+     "이름", "나이", "지역"
+     "홍길동" , "40", "제주도"
+     "김철수", "255", "인천"
+       ["이름":"홍길동","나이":"40, "지역":"제주도".....]
+
+       --zip (~,~) : 여러개의 (듀플, 리스트)들을 인수로 각각의 동일한
+       인덱스의 요소들을 묶어서 새로운 튜플을 요소로 반환
+
+========================================================================
+모듈 -- 파이썬의 명령 묶음 정리( 표준-기본 / 외분 모듈 )
+
+표준 모듈 -- import 모듈
+
+( math, random, datetime, os, sys, json, re, string)
+math 모듈 ( 수학계산 )
+math.sqrt(숫자) --- 제곱근
+math.pow(숫자1, 숫자2) -- 숫자1의 숫자2제곱
+math.ceil(숫자) -- 올림
+math.floor(숫자) -- 내림 (권장 함수)
+math.trunc(숫자) -- 버림(소수점 버림)
+math.round(숫자) -- 반올림
+math.fabs(~) -- 절대값
+
+삼각함수
+math.sin(~)  ~ : 라디안각
+math.cos(~)
+math.tan(~)
+math.radians(~) : 호도각을 라디안으로
+math.degrees(~) : 라디안각을 호도각
+math.atan2(x, y) : 좌표로 각도 구하기
+math.pi --- 원주율 상수
+math.factorial(x) -- 팩토리얼 factorial(5) --> 5*4*3*2*1
+math.hypot(x2-x1, y2-y1) 두 점 사이 거리
+
+=============================================================
+
+random모듈 import random
+random.random() -- 0~1 사이 실수(소수)
+random.randint(a,b) -- a부터 b까지의 정수 출력
+random.choice(리스트) -- 리스트중에서 임의 선택
+random.sample(리스트,개수) -- 리스트중에서 중복없이 여러개 선택
+random.shuffle(리스트) -- 리스트 순서 섞임.
+ramdom.seed(~) -- 난수 생성 초기값 설정
+random.getstate() -- 현재상태 저장
+random.setstate(state) -- 저장된 상태 복원
+
+=============================================================
+
+datetime 모듈 (날짜, 시간) ---> 외부( dateutil / pytz )
+
+dateutil -- 문자열 날짜 파싱, 반복일정생성, 상대적 날짜 계산
+pytz --- 정확한 시간대 처리, 역사적 시간대 정보
+
+import datetime
+
+
+datetime.datetime.now() - 현재 날짜와 시간
+ --- now.date(날짜만) 2026 - 01 - 10
+     now.time(시간만) 16:43:47.124
+     now.strfti() 날짜를문자열로 포맷
+     now strftime ("%y년, %m월, %d일)
+     .year / .month / .day / .weekday():요일 순번 0 => 월요일
+     .hour / .minute / .second / microsecond
+
+detetime.datetimer(year,m,d)
+datetime.timedelta(~) : 시간차 계산
+
+==================================================================================
+클래스 , 객체
+class -- 객체 생성 틀 정의
+
+std1 = {'name' : '철수', 'age':20}
+std2 = {'name' : '영희', 'age':21}
+def print_st(student):
+    print(f"{}{})
+
+print_st(std1)
+print_st(std2)
+-----------------------------------------------------
+class Student:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+    def introduce(self):
+        print(f"{}{})
+
+std1 = Student('철수',20)
+std2 = Student('영희',21)

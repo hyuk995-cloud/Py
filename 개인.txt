@@ -8,3 +8,7 @@ api쪽 신경쓸것
 풀페이지형식
 대쉬보드
 https://webcode.tools/css-generator/background-gradient
+
+칼라어도비 색상 추출
+
+Flask 서버 - html, js
