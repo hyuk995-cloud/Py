@@ -1,0 +1,163 @@
+클래스
+    초기 생성 실행( def __init__() )
+
+부모 클래스 --> 자식 클래스
+    자식 클래스 생성 class 클래스명 (부모클래스) : 
+-------------------------------------------------------
+계좌 (부모 클래스) Account
+ -- 자유예금 FreeAccount / 적금 SavingAccount / 정기예금 FixedAccount (자식 클래스)
+    30일 --> 이자 계산 (datatime, timedelta - import)
+
+은행
+ -- 계좌 생성 / 목록 관리 / 통장내역 저장(파일)
+-------------------------------------------------------
+계좌(소유주이름, 잔액, 최초등록)
+ - 이력, 최초 등록일 부터 이자 계산 / 입금, 잔액출력
+
+
+====================================================================
+json 형식 데이터 --- 데이터 저장 xml, json
+{
+    data:{
+        "key":"value",
+        "key":"value",
+        "key":[],
+        "key":[{ }, { }],
+    }
+}
+---> 파이썬에서 json형식을 데이터 load
+               json형식으로 변환
+json 모듈 필요 (데이터 파일 저장 / 호출 / 관리)
+
+import json
+** data = '{"key" : "value", "key":"value"}'
+- json.dumps() : 파이썬 객체를 json 문자열로
+        dumps(data, ensure_ascii=False, indent=들여쓰기 공백 수)
+             (sort_keys = true (키 정렬) )
+
+- json.loads() : json문자열을 파이썬 객체로
+- json.dump() : 파일에 json을 저장
+- json.load() : 파일에서 json 읽기
+
+-----------------------------------------------------------------------
+#1. dumps()
+data = {'name':'홍길동','age':30}
+json_string = json.dumps(data, ensure_ascii=False)
+print(json_string) # '{"name":"홍길동", "age":30}'
+
+#2. loads()
+json_str = '{"name":"홍길동", "age":30}'
+python_obj = json.loads(json_str)
+print(python_obj['name']) #홍길동
+
+#3. dump()
+with open('data.json','w',encoding='utf-8') as f:
+    json.dump(data, f, ensure_ascii=False, indent=4)
+
+
+#4. load()
+with open('data.json', 'r', encoding='utf-8') as f:
+    loaded_data = json.load(f)
+    print(loaded_data)
+
+-------------------------------------------------------------------
+os 모듈 ( 운영체제 관련 기능 - 파일, 디렉토리 관리 )
+import os
+
+os.getcwd() : 프로젝트 현재 경로
+os.mkdir(path) : 새폴더 생성
+os.remove(path) : 디렉토리 삭제
+os.replace(데이터1, 데이터2) : 데이터1을 데이터2로 덮어씌기
+os.isfile(path) : 디렉토리가 파일인지 판단
+os.path.exists(path) : 디렉토리 존재 여부 확인
+os.path.getSize(path) : 바이트 단위 크기 반환값
+os.path.getmtime(path) : 마지막 수정 시간
+
+*******************todoManager***************************
+할 일 삭제 함수
+        def delete_todo(self, todo_id):
+            for i, todo in enumerate(self.todos):
+                if todo["id"] == todo_id:
+                    remove = self.todos.pop(i)
+                        self.save_todos()
+                        print(f"{removed}['task'])
+                        return
+            print("해당 번호 찾을 수 없습니다.")
+
+===============================================================
+try-except 에러-finally:(#에러 결과 상관 없이 무조건 실행)
+    : 파일닫기 / 네트워크 종료 / 데이터베이스 연결 해제
+      임시파일 삭제
+try:
+    file = open(filename, "r", encoding...)
+    content = file.read()
+    ...
+except FileNotFountError:
+    ...
+finally:
+    if file:
+       file.close()
+--> with open(file, 'r', encoding) as f
+
+RE 모듈 ( 정규 표현식 문자열 검색 및 조작 )
+import re
+
+이메일 유효성 검사
+[ 영문+숫자 @ 영문+숫자 . 영문 ]
+pattern = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'
+re.math(pattern, email)
+
+
+re.search(r'\d{3}-`d{4}-d{4}' ,text) : 전화번호 패턴 찾기
+
+re.findall(pattern, text) : 모든 매칭된 요소를 리스트로 반환
+
+[가-힣a-zA-Z]
+
+===============================================
+string모듈, system 모듈
+외부 모듈 pip로 설치 (pip install 모듈명)
+ -- requests: HTTP요청
+    pandas: 데이터 분석(csv.xlsx..)
+    numpy : 수치계산
+    matplotlib: 그래프
+
+ -- 웹 크롤링 ( 웹에서 정보 자동 수집 )
+     [뉴스, 날씨, 가격 정보 자동 수집 --- beauifulsoup4 모듈 설치]
+    pip install beauifulsoup4
+
+    form bs4 import beauifulSoup
+
+
+    html = """
+    <html>
+    <head><title>파이썬 뉴스</title></head>
+    <body>
+        <h1>오늘의 뉴스</h1>
+        <div class="news">
+            <h2>파이썬 4.0 출시 </h2>
+            <p class="date">2026-01-11</p>
+            <p class="content">파이썬 4.0 출시됨</p>
+        </div>
+        <div class="news">
+            <h2> ai 코딩 활용 </h2>
+            <p class="date">2026-01-11</p>
+            <p class="content">ai코딩 도우미 시대.</p>
+        </div>
+    </body>
+    </html>
+    """
+    soup = BeatifulSoup(html,'html.parser')
+    title = soup.find('title')
+    print(f"페이지 제목: {title.text}\n")
+    #모든 뉴스 찾기
+    news_items = soup.find_all('div', class_="news")
+    print(f"총{ len(news_items)개 뉴스: \n:})
+
+    for news in news_items:
+        headline = news.find('h2').text
+        date = news.find('p', class_='date').text
+        content = news.find('p', class_='content').text
+        print(f"제목: {headline}")
+        print(f"날짜: {date}")
+        print(f"내용: {content}\n")
